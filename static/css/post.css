@@ -1,0 +1,176 @@
+body {
+  margin: auto;
+  max-width: 900px;
+  width: 95%;
+  text-align: center;
+  font-family: system-ui, sans-serif;
+}
+
+#post-form {
+  background-color: antiquewhite;
+  border-radius: 46px;
+  padding: 1% 1%;
+  line-height: 2.6;
+  font-family: "Comic Neue";
+  font-size: x-large;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+textarea {
+  width: 100%;
+  border-radius: 30px;
+  border-width: 1px;
+  padding: 20px;
+  background-color: rgb(228, 255, 255);
+  font-size: 18px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+textarea:focus {
+  box-shadow: 0px 0px 20px #f19100;
+  border-style: dashed;
+}
+
+.head {
+  background-color: rgba(250, 235, 215, 0.445);
+  font-size: 20px;
+  border-radius: 50px;
+  padding-bottom: 5%;
+}
+
+h1 {
+  font-family: "Baumans";
+}
+
+#title {
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 5px 10px;
+  background-color: rgb(228, 255, 230);
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#title:focus {
+  border-style: dashed;
+  box-shadow: 0px 0px 10px #ff0000;
+}
+
+#post {
+  padding: 10px 20px;
+  font-size: 22px;
+}
+
+.btn-class-name {
+  --primary: 255, 90, 120;
+  --secondary: 150, 50, 60;
+  width: 60px;
+  height: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  outline: 10px solid rgb(var(--primary), .5);
+  border-radius: 100%;
+  position: relative;
+  transition: .3s;
+}
+
+.btn-class-name .back {
+  background: rgb(var(--secondary));
+  border-radius: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.btn-class-name .front {
+  background: linear-gradient(0deg, rgba(var(--primary), .6) 20%, rgba(var(--primary)) 50%);
+  box-shadow: 0 .5em 1em -0.2em rgba(var(--secondary), .5);
+  border-radius: 100%;
+  position: absolute;
+  border: 1px solid rgb(var(--secondary));
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: inherit;
+  transform: translateY(-15%);
+  transition: .15s;
+  color: rgb(var(--secondary));
+}
+
+.btn-class-name:active .front {
+  transform: translateY(0%);
+  box-shadow: 0 0;
+}
+
+#post-box {
+  align-items: center;
+  background: linear-gradient(90deg, #ff00004b, #ff480057);
+  min-height: 100px;
+  padding: 10px;
+  border-bottom-left-radius: 46px;
+  border-bottom-right-radius: 46px;
+}
+
+#status {
+  display: none;
+  border-radius: 50px;
+  padding: 30px 10px;
+  font-size: 22px;
+  font-family: "Comic Neue";
+  font-weight: 900;
+}
+
+#head-form {
+  align-items: center;
+  background: linear-gradient(90deg, #ff00004b, #ff480057);
+  min-height: 100px;
+  padding: 10px;
+  border-top-left-radius: 46px;
+  border-top-right-radius: 46px;
+}
+
+
+@media (max-width: 600px) {
+  #post-form {
+    font-size: large;
+    padding: 5% 3%;
+  }
+
+  textarea {
+    font-size: 16px;
+    padding: 15px;
+  }
+
+  #title {
+    font-size: 16px;
+    padding: 8px;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    max-width: 800px;
+  }
+
+  #post-form {
+    font-size: 1.3rem;
+  }
+
+  textarea {
+    font-size: 18px;
+  }
+}
