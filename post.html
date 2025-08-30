@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeGuide - New Post</title>
+    <script src="static/js/post.js" defer></script>
+    <link rel="stylesheet" href="static/css/post.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baumans&family=Bowlby+One+SC&family=Chango&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="head">
+        <h1>Create a new post</h1>
+        <a href="home.html">Back to feed</a>
+    </div>
+
+    <br>
+
+    <form id="post-form">
+        <div id="head-form">
+            <label for="title">Title:</label><br>
+            <input type="text" id="title" name="title" required><br><br>
+
+        </div>
+
+        <label for="content">Content:</label><br>
+        <textarea id="content" name="content" rows="5" required></textarea><br><br>
+        <div id="post-box">
+            <button title="submit" class="btn-class-name" type="submit">
+                <span class="back"></span>
+                <span class="front"></span>
+            </button>
+            <div id="post-text">post</div>
+        </div>
+
+
+
+    </form>
+    <p id="status"></p>
+
+</body>
+
+</html>
