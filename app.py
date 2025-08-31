@@ -1,26 +1,33 @@
-
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from flask_cors import CORS   # zodat frontend requests werken
+from flask_cors import CORS
+from datetime import datetime, timedelta
+from sqlalchemy.sql import func
 
 app = Flask(__name__)
-CORS(app)  # staat JavaScript toe om met Flask te praten
+CORS(app)
 
-# ---------------- Database configuratie ----------------
+# Database configuratie
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///posts.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
-# ---------------- Model ----------------
+# Model
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
     content = db.Column(db.Text, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     def to_dict(self):
-        return {"id": self.id, "title": self.title, "content": self.content}
+        return {
+            "id": self.id,
+            "title": self.title,
+            "content": self.content,
+            "created_at": self.created_at.isoformat()
+        }
 
-# ---------------- Database aanmaken ----------------
+# Database aanmaken
 with app.app_context():
     db.create_all()
 
@@ -44,13 +51,30 @@ def add_post():
     db.session.commit()
     return jsonify({"message": "Post added!", "post": new_post.to_dict()}), 201
 
-# Eén post ophalen
+# Feed endpoint: willekeurig + recent
+@app.route("/api/feed", methods=["GET"])
+def get_feed():
+    thirty_days_ago = datetime.utcnow() - timedelta(days=30)
+    # Haal query params op, standaard limit=10, offset=0
+    limit = int(request.args.get("limit", 10))
+    offset = int(request.args.get("offset", 0))
+    
+    posts = (
+        Post.query
+        .filter(Post.created_at >= thirty_days_ago)
+        .order_by(func.random())
+        .offset(offset)
+        .limit(limit)
+        .all()
+    )
+    return jsonify([p.to_dict() for p in posts])
+
+# Post ophalen / updaten / verwijderen
 @app.route("/api/posts/<int:post_id>", methods=["GET"])
 def get_post(post_id):
     post = Post.query.get_or_404(post_id)
     return jsonify(post.to_dict())
 
-# Post updaten
 @app.route("/api/posts/<int:post_id>", methods=["PUT"])
 def update_post(post_id):
     data = request.json
@@ -60,7 +84,6 @@ def update_post(post_id):
     db.session.commit()
     return jsonify({"message": "Post updated!", "post": post.to_dict()})
 
-# Post verwijderen
 @app.route("/api/posts/<int:post_id>", methods=["DELETE"])
 def delete_post(post_id):
     post = Post.query.get_or_404(post_id)
@@ -68,6 +91,6 @@ def delete_post(post_id):
     db.session.commit()
     return jsonify({"message": "Post deleted!"})
 
-# ---------------- Run server ----------------
+# Run server
 if __name__ == "__main__":
     app.run(debug=True)
