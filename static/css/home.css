@@ -1,0 +1,143 @@
+/* ---------------- Body ---------------- */
+body {
+  margin: auto;
+  max-width: 900px;
+  width: 95%;
+  text-align: center;
+  font-family: "Comic Neue", system-ui, sans-serif;
+  background-color: #f8f8f8;
+  padding-bottom: 50px;
+}
+
+/* ---------------- Headers ---------------- */
+h1 {
+  font-family: "Baumans", cursive;
+  font-size: 2.5rem;
+  margin-top: 20px;
+  color: #ff4800;
+}
+
+h2 {
+  font-family: "Chango", cursive;
+  font-size: 2rem;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: #ff6f61;
+}
+
+/* ---------------- Links ---------------- */
+a {
+  display: inline-block;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: white;
+  background-color: #ff4800;
+  padding: 8px 16px;
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+
+a:hover {
+  background-color: #ff6f61;
+  box-shadow: 0px 0px 10px #ff0000;
+}
+
+/* ---------------- Feed Container ---------------- */
+#feed-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+/* ---------------- Individual Post ---------------- */
+#feed-container > div {
+  width: 100%;
+  background: linear-gradient(90deg, #ffefd5aa, #ffe4b580);
+  border-radius: 46px;
+  padding: 15px;
+  box-sizing: border-box;
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#feed-container > div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+}
+
+#feed-container h3 {
+  font-family: "Bowlby One SC", cursive;
+  font-size: 1.6rem;
+  margin: 0 0 10px 0;
+  color: #ff6f61;
+}
+
+#feed-container p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0 0 10px 0;
+}
+
+#feed-container small {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+/* ---------------- Status / Messages ---------------- */
+#status {
+  display: none;
+  border-radius: 50px;
+  padding: 20px 10px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-family: "Comic Neue", sans-serif;
+  margin-bottom: 20px;
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 600px) {
+  #feed-container > div {
+    padding: 12px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  #feed-container h3 {
+    font-size: 1.3rem;
+  }
+
+  #feed-container p {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    max-width: 800px;
+  }
+
+  #feed-container > div {
+    padding: 20px 25px;
+  }
+
+  #feed-container h3 {
+    font-size: 1.8rem;
+  }
+
+  #feed-container p {
+    font-size: 1.2rem;
+  }
+}
+#feed-container h3, 
+#feed-container p {
+    word-wrap: break-word; /* Lange woorden breken */
+    overflow-wrap: break-word; /* moderne standaard */
+}
