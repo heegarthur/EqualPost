@@ -3,6 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from datetime import datetime, timedelta
 from sqlalchemy.sql import func
+import approve
+
+
 
 app = Flask(__name__)
 CORS(app)
@@ -44,12 +47,22 @@ def get_posts():
 def add_post():
     data = request.json
     if not data or "title" not in data or "content" not in data:
-        return jsonify({"error": "Invalid input"}), 400
+        return jsonify({"status":"error","reason": "Invalid input"}), 400
 
-    new_post = Post(title=data["title"], content=data["content"])
-    db.session.add(new_post)
-    db.session.commit()
-    return jsonify({"message": "Post added!", "post": new_post.to_dict()}), 201
+    post_check = f"{data['title']} {data['content']}"
+    approved = approve.check_post(post_check)
+    print(post_check)
+    if approved.lower() == "good":
+        new_post = Post(title=data["title"], content=data["content"])
+        db.session.add(new_post)
+        db.session.commit()
+        return jsonify({"status":"approved","message": "Post created successfully!", "post": new_post.to_dict()}), 201
+    elif approved.lower() == "bad":
+        return jsonify({"status":"rejected","reason":"Post rejected by AI moderation"}), 200
+    elif approved.lower() == "too long":
+        return jsonify({"status":"rejected","reason":"Post is too long"})
+    else:
+        return jsonify({"status":"error","reason":"Unknown AI approval error"}), 500
 
 # Feed endpoint: willekeurig + recent
 @app.route("/api/feed", methods=["GET"])
