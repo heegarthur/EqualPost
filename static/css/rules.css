@@ -1,0 +1,66 @@
+body {
+    margin: auto;
+    max-width: 900px;
+    width: 95%;
+    text-align: center;
+    background-color: antiquewhite;
+    border-radius: 46px;
+    padding: 2% 2%;
+    line-height: 2.6;
+    font-size: x-large;
+    border: 2px solid rgba(255, 72, 0, 0.4);
+    box-shadow: 0px 0px 20px rgba(255, 72, 0, 0.4);
+}
+
+h1 {
+
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    background: linear-gradient(90deg, #ff00004b, #ff480057);
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.3s;
+    font-family: "Bowlby One SC";
+    font-size: xx-large;
+    font-weight: lighter;
+}
+
+li:hover {
+    background: linear-gradient(90deg, #ff480057, #ff00004b);
+    transform: scale(1.05);
+    box-shadow: 0px 0px 15px #f19100;
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: large;
+        padding: 5% 3%;
+    }
+
+    li {
+        font-size: 16px;
+        padding: 12px;
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        max-width: 800px;
+    }
+
+    li {
+        font-size: 20px;
+    }
+}
