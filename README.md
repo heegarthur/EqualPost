@@ -7,7 +7,8 @@ Submit any feedback and feature requests:
 [form](https://docs.google.com/forms/d/e/1FAIpQLSeEaSqr6L2pTQDarLO__wZtefVuemrhMb8RDdX6vQSWNEjZzQ/viewform?usp=header/)
 
 ---
-
+## Support
+If you want to, you can support me here: [support](https://buymeacoffee.com/ivocreator)
 
 ## License
 
