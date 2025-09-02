@@ -9,6 +9,7 @@ Submit any feedback and feature requests:
 ---
 ## Support
 If you want to, you can support me here: [support](https://buymeacoffee.com/ivocreator)
+pull requests are also welcome
 
 ## License
 
