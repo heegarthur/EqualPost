@@ -1,4 +1,14 @@
 # EQUALPOST
+---
+
+## 💬 Feature request
+
+Submit any feedback and feature requests: 
+[form](https://docs.google.com/forms/d/e/1FAIpQLSeEaSqr6L2pTQDarLO__wZtefVuemrhMb8RDdX6vQSWNEjZzQ/viewform?usp=header/)
+
+---
+
+
 ## License
 
 ```text
@@ -13,3 +23,4 @@ any distribution or derivative work.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.
 ```
+
