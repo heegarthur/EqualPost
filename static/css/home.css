@@ -25,7 +25,6 @@ h2 {
   color: #ff6f61;
 }
 
-/* ---------------- Links ---------------- */
 a {
   display: inline-block;
   margin-bottom: 20px;
@@ -43,7 +42,6 @@ a:hover {
   box-shadow: 0px 0px 10px #ff0000;
 }
 
-/* ---------------- Feed Container ---------------- */
 #feed-container {
   display: flex;
   flex-direction: column;
@@ -51,7 +49,6 @@ a:hover {
   align-items: center;
 }
 
-/* ---------------- Individual Post ---------------- */
 #feed-container > div {
   width: 100%;
   background: linear-gradient(90deg, #ffefd5aa, #ffe4b580);
@@ -85,7 +82,6 @@ a:hover {
   font-size: 0.9rem;
 }
 
-/* ---------------- Status / Messages ---------------- */
 #status {
   display: none;
   border-radius: 50px;
@@ -96,7 +92,6 @@ a:hover {
   margin-bottom: 20px;
 }
 
-/* ---------------- Responsive ---------------- */
 @media (max-width: 600px) {
   #feed-container > div {
     padding: 12px;
@@ -138,6 +133,6 @@ a:hover {
 }
 #feed-container h3, 
 #feed-container p {
-    word-wrap: break-word; /* Lange woorden breken */
-    overflow-wrap: break-word; /* moderne standaard */
+    word-wrap: break-word; 
+    overflow-wrap: break-word;
 }
