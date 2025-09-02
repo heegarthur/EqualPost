@@ -11,9 +11,8 @@ app = Flask(__name__)
 CORS(app)
 
 ip_requests = {}
-LIMIT_SECONDS = 14400  # 1 minuut
+LIMIT_SECONDS = 14400  
 
-# Database configuratie
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///posts.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
@@ -25,11 +24,10 @@ def check_ip_limit():
     if ip in ip_requests:
         last_request = ip_requests[ip]
         if now - last_request < LIMIT_SECONDS:
-            return False  # te snel opnieuw
+            return False 
     ip_requests[ip] = now
-    return True  # mag doorgaan
+    return True  
 
-# Model
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
@@ -44,19 +42,14 @@ class Post(db.Model):
             "created_at": self.created_at.isoformat()
         }
 
-# Database aanmaken
 with app.app_context():
     db.create_all()
 
-# ---------------- API Routes ----------------
-
-# Alle posts ophalen
 @app.route("/api/posts", methods=["GET"])
 def get_posts():
     posts = Post.query.all()
     return jsonify([p.to_dict() for p in posts])
 
-# Nieuwe post toevoegen
 @app.route("/api/posts", methods=["POST"])
 def add_post():
     if not check_ip_limit():
@@ -89,11 +82,11 @@ def add_post():
 # Feed endpoint: willekeurig + recent
 @app.route("/api/feed", methods=["GET"])
 def get_feed():
-    thirty_days_ago = datetime.utcnow() - timedelta(days=30)
+    thirty_days_ago = datetime.utcnow() - timedelta(days=10000)
     # Haal query params op, standaard limit=10, offset=0
     limit = int(request.args.get("limit", 10))
     offset = int(request.args.get("offset", 0))
-    
+
     posts = (
         Post.query
         .filter(Post.created_at >= thirty_days_ago)
@@ -104,7 +97,7 @@ def get_feed():
     )
     return jsonify([p.to_dict() for p in posts])
 
-# Post ophalen / updaten / verwijderen
+#this part is not made yet
 @app.route("/api/posts/<int:post_id>", methods=["GET"])
 def get_post(post_id):
     post = Post.query.get_or_404(post_id)
