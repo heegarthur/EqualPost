@@ -55,10 +55,8 @@ def check_post(content, model_file=MODEL_FILE):
     if len(content) > MAX_LENGTH:
         return "too long"
     
-    # Te kort?
     if len(content.split()) < MIN_WORDS:
         return "too short"
-
 
 
     # Model check
