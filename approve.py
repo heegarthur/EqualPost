@@ -1,13 +1,11 @@
 import os
 import pandas as pd
 import joblib
-from langdetect import detect, DetectorFactory
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import classification_report
 
-DetectorFactory.seed = 0  # voor consistente detecties
 
 # --------------------------
 # Config
@@ -16,7 +14,6 @@ DATA_FILE = "data.csv"
 MODEL_FILE = "post_model.pkl"
 MAX_LENGTH = 700   # max karakters
 MIN_WORDS = 3      # min woorden
-BLOCK_NON_ENGLISH = True
 
 # --------------------------
 # Train functie
@@ -62,15 +59,7 @@ def check_post(content, model_file=MODEL_FILE):
     if len(content.split()) < MIN_WORDS:
         return "too short"
 
-    # Taal detectie
-    lang = "unknown"
-    try:
-        lang = detect(content)
-    except:
-        pass
 
-    if BLOCK_NON_ENGLISH and lang != "en":
-        return "bad"
 
     # Model check
     clf = load_model(model_file)
