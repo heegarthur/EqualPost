@@ -49,7 +49,6 @@ async function loadFeed() {
     }
 }
 
-// Detecteer scroll naar onderkant
 window.addEventListener("scroll", () => {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
         loadFeed();
