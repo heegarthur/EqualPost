@@ -79,11 +79,10 @@ def add_post():
     else:
         return jsonify({"status":"error","reason":"Unknown AI approval error"}), 500
 
-# Feed endpoint: willekeurig + recent
 @app.route("/api/feed", methods=["GET"])
 def get_feed():
     thirty_days_ago = datetime.utcnow() - timedelta(days=10000)
-    # Haal query params op, standaard limit=10, offset=0
+
     limit = int(request.args.get("limit", 10))
     offset = int(request.args.get("offset", 0))
 
@@ -119,6 +118,5 @@ def delete_post(post_id):
     db.session.commit()
     return jsonify({"message": "Post deleted!"})
 
-# Run server
 if __name__ == "__main__":
     app.run(debug=True)
